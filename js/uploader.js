@@ -1,3 +1,4 @@
+var APIURL = "https://triplecrown.azurewebsites.net/";
 var fileName;
 
 function startRead(evt) {
@@ -28,7 +29,7 @@ function cleanupAndUpload(imageData){
     var myData = new FormData();
     myData.append("image", cleanData);
     var request = new XMLHttpRequest();
-    var url = 'https://triplecrown.azurewebsites.net/api/image/put/' + fileName;
+    var url = APIURL + 'api/image/put/' + fileName;
     request.open("POST", url, true);
     request.send(myData);
 }
