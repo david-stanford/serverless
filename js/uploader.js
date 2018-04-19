@@ -1,4 +1,28 @@
-var APIURL = "https://triplecrown.azurewebsites.net/";
+var APIURL = "https://triplecrown1.azurewebsites.net";
+var myApp = angular.module('imageApp', []);
+
+myApp.controller('imageController', function($scope, dataService) {
+    var imageList = null;
+ 
+    function loadImages(){
+        dataService.getData().then(function(dataResponse) {
+            $scope.imageList = dataResponse.data;
+            showSlides();
+        });
+    }
+    loadImages();
+  });
+
+  myApp.service('dataService', function($http) {
+    this.getData = function() {
+        return $http({
+            method: 'GET',
+            url: APIURL + "/api/image/list",
+            headers: {'Content-Type': 'application/json'}
+         });
+     }
+});
+
 var fileName;
 
 function startRead(evt) {
@@ -7,7 +31,6 @@ function startRead(evt) {
         if (file.type.match("image.*")) {
             getAsImage(file, addImg);
             fileName = file.name;
-            alert("Name: " + file.name + "\n" + "Last Modified Date :" + file.lastModifiedDate);
         }
     }
 }
@@ -29,13 +52,12 @@ function cleanupAndUpload(imageData){
     var myData = new FormData();
     myData.append("image", cleanData);
     var request = new XMLHttpRequest();
-    var url = APIURL + 'api/image/put/' + fileName;
+    var url = APIURL + '/api/image/put/' + fileName;
     request.open("POST", url, true);
     request.send(myData);
 }
 
 function upload(){
-
     // Loop through each of the selected files.
     var fileSelect = document.getElementById('file');
     var files = fileSelect.files;
