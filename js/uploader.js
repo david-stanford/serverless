@@ -47,6 +47,4 @@ function upload(){
             continue;
         }
     }
-//https://stackoverflow.com/questions/166221/how-can-i-upload-files-asynchronously
-//http://blog.teamtreehouse.com/uploading-files-ajax
 }
