@@ -7,12 +7,12 @@
   </head>
   <body>
     <div class="slideshow-container" ng-if="imageList != null">
-        <div class="mySlides fade" ng-repeat="image in imageList">
+        <div class="mySlides fade" style:"display: none;" ng-repeat="image in imageList">
             <img src={{image.url}} style="width:100%">
             <div class="text">{{image.caption}}</div>
         </div>
     </div>
-    <center><input type="button" ng-click="loadImages();" value="Reload images"></center>
+    <center><button ng-click="loadImages();" value="Reload images"></center>
     <BR><BR>
         <div><form id='uploadForm'>
                 <input type=file id='file' onchange="startRead()"/>

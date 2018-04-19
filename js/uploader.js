@@ -7,7 +7,6 @@ myApp.controller('imageController', function($scope, dataService) {
     function loadImages(){
         dataService.getData().then(function(dataResponse) {
             $scope.imageList = dataResponse.data;
-            showSlides();
         });
     }
     loadImages();
