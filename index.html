@@ -1,0 +1,44 @@
+<HTML>
+    <HEAD>
+        <link rel="stylesheet" type="text/css" href="./css/slideshow.css">
+        <link rel="stylesheet" type="text/css" href="./css/uploader.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    </HEAD>
+    <BODY>
+        <div>
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
+
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="./img/puppy.jpg" style="width:100%">
+                <div class="text">Caption Text</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="./img/puppy2.jpg" style="width:100%">
+                <div class="text">Caption Two</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="./img/puppy3.jpg" style="width:100%">
+                <div class="text">Caption Three</div>
+            </div>
+            </div>
+            <br>
+        </div>   <BR><BR><HR>
+        <div><form id='uploadForm'>
+                <input type=file id='file' onchange="startRead()"/>
+                <div id="draghere">Drop files here</div>
+                <input type="button" id='uploadButton' value='Upload' onclick="upload();"/>
+        </form></div>
+        <div id='preview'><h2>Preview</h2>
+        </div>
+
+        <script src="./js/slideshow.js"></script>
+        <script src="./js/uploader.js"></script>
+    </BODY>
+</HTML>

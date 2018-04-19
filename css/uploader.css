@@ -1,0 +1,7 @@
+#draghere {
+  width:300px;
+  height:100px;
+  background-color:rgba(221,214,155,0.4);
+  border:1px dashed black;
+  text-align:center;
+}
