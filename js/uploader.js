@@ -1,15 +1,15 @@
-var APIURL = "https://triplecrown1.azurewebsites.net";
+var APIURL = "https://yoururl.azurewebsites.net";
 var myApp = angular.module('imageApp', []);
 
 myApp.controller('imageController', function($scope, dataService) {
     var imageList = null;
  
-    function loadImages(){
+    $scope.loadImages = function(){
         dataService.getData().then(function(dataResponse) {
             $scope.imageList = dataResponse.data;
         });
     }
-    loadImages();
+    $scope.loadImages();
   });
 
   myApp.service('dataService', function($http) {

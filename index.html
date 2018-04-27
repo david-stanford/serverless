@@ -1,12 +1,12 @@
 <!doctype html>
-<html ng-app="imageApp" ng-controller="imageController">
+<html ng-app="imageApp">
   <head>
     <link rel="stylesheet" type="text/css" href="./css/slideshow.css">
     <link rel="stylesheet" type="text/css" href="./css/uploader.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <title>Serverless App</title>
   </head>
-  <body><center>
+  <body ng-controller="imageController"><center>
     <h1> Welcome to a serverless application</h1>
     <div ng-if="imageList == null">
       Please upload images and reload the images to see the application in action.
