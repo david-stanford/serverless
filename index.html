@@ -4,16 +4,22 @@
     <link rel="stylesheet" type="text/css" href="./css/slideshow.css">
     <link rel="stylesheet" type="text/css" href="./css/uploader.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Serverless App</title>
   </head>
-  <body>
+  <body><center>
+    <h1> Welcome to a serverless application</h1>
+    <div ng-if="imageList == null">
+      Please upload images and reload the images to see the application in action.
+    </div>
     <div class="slideshow-container" ng-if="imageList != null">
         <div class="mySlides fade" style:"display: none;" ng-repeat="image in imageList">
             <img src={{image.url}} style="width:100%">
             <div class="text">{{image.caption}}</div>
         </div>
-    </div>
-    <center><button ng-click="loadImages();" value="Reload images"></center>
-    <BR><BR>
+    </div><div>
+      <BR><BR>
+    <button ng-click="loadImages();">Reload Images</button>
+    <BR><BR></div>
         <div><form id='uploadForm'>
                 <input type=file id='file' onchange="startRead()"/>
                 <input type="button" id='uploadButton' value='Upload' onclick="upload();"/>
@@ -23,5 +29,5 @@
 
         <script src="./js/slideshow.js"></script>
         <script src="./js/uploader.js"></script>
-  </body>
+  </center></body>
 </html>
