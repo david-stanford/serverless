@@ -1,25 +1,53 @@
-var APIURL = "https://yoururl.azurewebsites.net";
+var APIURL = "https://triplecrown1.azurewebsites.net";
 var myApp = angular.module('imageApp', []);
+
 
 myApp.controller('imageController', function($scope, dataService) {
     var imageList = null;
- 
+    var slideIndex = 0;
+
     $scope.loadImages = function(){
         dataService.getData().then(function(dataResponse) {
-            $scope.imageList = dataResponse.data;
+            $scope.imageList = dataResponse.data;              
         });
     }
+    
+    $scope.showSlides = function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none"; 
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1} 
+        slides[slideIndex-1].style.display = "block"; 
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    } 
+
+    $scope.$on('myRepeatDirective', function (scope, element, attrs) {
+        $scope.showSlides();
+    });
+    
     $scope.loadImages();
   });
 
-  myApp.service('dataService', function($http) {
+myApp.directive('myRepeatDirective', function() {
+    return function(scope, element, attrs) {
+        if (scope.$last) 
+            setTimeout(function () {
+                scope.$emit('myRepeatDirective', element, attrs);
+            }, 1);
+    };
+});
+
+myApp.service('dataService', function($http) {
     this.getData = function() {
         return $http({
             method: 'GET',
             url: APIURL + "/api/image/list",
             headers: {'Content-Type': 'application/json'}
-         });
-     }
+            });
+        }
 });
 
 var fileName;
@@ -43,6 +71,7 @@ function getAsImage(readFile, callback) {
 function addImg(imgsrc) {
     var imageFile = document.createElement('img');
     imageFile.setAttribute("src", imgsrc.target.result);
+    imageFile.setAttribute("style", "display: none;");
     document.getElementById("preview").insertBefore(imageFile, null);
 }
 

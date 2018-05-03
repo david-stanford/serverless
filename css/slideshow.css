@@ -2,17 +2,12 @@
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 500px;
   position: relative;
   margin: auto;
-  height: 300px;
 }
 
-.slideshow-container.img{
-  height:300px;
-  width:auto;
-  max-width:500px;
-  max-height:300px;
+.slideshow-container img{
+  height: 300px;
 }
 
 /* Hide the images by default */
@@ -22,10 +17,9 @@
 
 /* Caption text */
 .text {
-  color: #f2f2f2;
   font-size: 15px;
   padding: 8px 12px;
-  position: absolute;
+  position: relative;
   bottom: 8px;
   width: 100%;
   text-align: center;
