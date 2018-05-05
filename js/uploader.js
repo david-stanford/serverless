@@ -1,4 +1,4 @@
-var APIURL = "https://triplecrown1.azurewebsites.net";
+var APIURL = "https://serverless.azurewebsites.net";
 var myApp = angular.module('imageApp', []);
 
 
@@ -19,7 +19,9 @@ myApp.controller('imageController', function($scope, dataService) {
             slides[i].style.display = "none"; 
         }
         slideIndex++;
-        if (slideIndex > slides.length) {slideIndex = 1} 
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        } 
         slides[slideIndex-1].style.display = "block"; 
         setTimeout(showSlides, 2000); // Change image every 2 seconds
     } 
@@ -71,7 +73,7 @@ function getAsImage(readFile, callback) {
 function addImg(imgsrc) {
     var imageFile = document.createElement('img');
     imageFile.setAttribute("src", imgsrc.target.result);
-    imageFile.setAttribute("style", "display: none;");
+    imageFile.setAttribute("style", "display: block;");
     document.getElementById("preview").insertBefore(imageFile, null);
 }
 
