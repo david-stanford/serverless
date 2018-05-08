@@ -26,6 +26,10 @@ myApp.controller('imageController', function($scope, dataService) {
         setTimeout(showSlides, 2000); // Change image every 2 seconds
     } 
 
+    $scope.reload = function() {
+        location.reload();
+    }
+    
     $scope.$on('myRepeatDirective', function (scope, element, attrs) {
         $scope.showSlides();
     });
